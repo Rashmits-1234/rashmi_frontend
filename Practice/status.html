@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Status</title>
+</head>
+<body>
+    <h2>Reading Status of Books</h2>
+    
+    <div id="bookStatus"></div>
+
+    <script>
+      
+        var library = [ 
+            {
+                author: 'Bill Gates',
+                title: 'The Road Ahead',
+                readingStatus: true
+            },
+            {
+                author: 'Steve Jobs',
+                title: 'Walter Isaacson',
+                readingStatus: true
+            },
+            {
+                author: 'Suzanne Collins',
+                title:  'Mockingjay: The Final Book of The Hunger Games', 
+                readingStatus: false
+            }];
+
+       
+        function displayReadingStatus(library) {
+            var output = "<h3>Reading Status of Books:</h3>";
+            library.forEach(function(book) {
+                output += "<p><strong>Title:</strong> " + book.title + "<br>";
+                output += "<strong>Author:</strong> " + book.author + "<br>";
+                if (book.readingStatus) {
+                    output += "<strong>Status:</strong> Currently reading</p>";
+                } else {
+                    output += "<strong>Status:</strong> Not yet read</p>";
+                }
+            });
+            return output;
+        }
+
+        
+        document.getElementById("bookStatus").innerHTML = displayReadingStatus(library);
+    </script>
+</body>
+</html>

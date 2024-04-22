@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fetch Products</title>
+</head>
+<body>
+  <h1>Products</h1>
+  <ul id="productList"></ul>
+<button class="btn-1">Click</button>
+  <script>
+
+    
+    const button = document.querySelector(".btn-1")
+    button.addEventListener("click",handleClick);
+    //const div = document.querySelector('.container') //getting ul
+    ul.addEventlistener('click',(e)=>)
+    function handleClick(){
+        fetch('https://p-97e.onrender.com/produacts/products')
+        .then (response => response.json())
+        .then(res => {
+            console.log(res.data);
+            for(let i=0; i<res.data; i++){
+                //const para = document.createElement('p');// certe a li
+                if(e.target =='LI')
+                para.innertext = res.data[i]._id+"=====> " + res.data[i].pname;
+                e.target.remove();// append li to ul
+            }
+        })
+    }
+    </script>
+</body>
+</html>

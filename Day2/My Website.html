@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Website</title>
+
+<style>
+  body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    display: grid;
+  }
+
+  header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 2em;
+    margin: 0;
+  }
+
+  nav {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+  }
+
+  main {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+
+  p {
+    line-height: 1.5;
+  }
+
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0;
+ }
+
+  .card-container2 {
+    background-color: #333;
+    color: white; / White text color /
+    padding: 20px;
+  }
+
+
+  .card {
+    border: 2px solid #212121;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    margin: 10px;
+    width: calc(25% - 40px);
+    box-sizing: border-box;
+  }
+
+  .card h3 {
+    font-size: 1em;
+    margin-bottom: 10px;
+  }
+
+  .container {
+    text-align: right; / Aligns content to the right /
+  }
+
+  .card-header {
+    background-color: #333; / Dark background /
+    color: white; / White text color /
+    padding: 10px; / Add padding for better spacing /
+  }
+
+  footer {
+    padding: 20px;
+    text-align: center;
+  }
+
+  / New styles for sections /
+  .card-container3 {
+    grid-column: 1 / span 2; / Spans both columns /
+    padding: 20px;
+  }
+
+</style>
+
+</head>
+<body>
+<header style="background-color: #333; color: white;">
+  <h1>My Website</h1>
+  <nav>
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+  </nav>
+</header>
+
+
+<main>
+  <h2>This is the main heading</h2>
+<section class="card-container3">
+  <p>Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon azuki bean garlic.</p>
+  <br>
+  <p>Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.</p>
+</section>
+	<br>
+<section class="card-container2">
+    <p align="right">Have you discovered all of the<br> other excellent content on this website?</p>
+</section>
+
+
+<section class="card-container">
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Card One</h3>
+  </div>
+  <p>Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi amaranth water spinach avocado.</p>
+</div>
+
+
+    <div class="card">
+  <div class="card-header">
+      <h3>Card Two</h3>
+  </div>
+      <p>Daikon napa cabbage asparagus lotus root water spinach fennel winter purslane kale. Celery potato kombu maize bamboo shoot green scallion desert raisin          horseradish bean swiss chard seakale pumpkin onion chickpea gram corn pea.</p>
+    </div>
+
+    <div class="card">
+  <div class="card-header">
+      <h3>Card Three</h3>
+  </div>
+      <p>Lotus root water spinach fennel kombu maize bamboo shoot green bean swiss chard seakale pumpkin onion chickpea gram corn pea.</p>
+    </div>
+
+    <div class="card">
+  <div class="card-header">
+      <h3>Card Four</h3>
+  </div>
+      <p>Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea prairie turnip leek lentil turnip greens          parsnip.</p>
+    </div>
+
+    <div class="card">
+ <div class="card-header">
+      <h3>Card Five</h3>
+  </div>
+      <p>Text content for card five goes here.</p>
+    </div>
+  </section>
+</main>
+<footer>
+
+</footer>
+</body>
+</html>

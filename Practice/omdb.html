@@ -1,0 +1,29 @@
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>omdb api</title>
+    </head>
+    <body>
+        <h1>OMDB API</h1>
+        <input type="text" id="searchInput">
+        <input type="text" id ="serchInput">
+        <button onclick="searchMovie()">Search</button>
+        <div id="results"></div>
+        <script>
+            function searchMovie(){
+                const apiKey='79f99584';
+                const searchQuery=documnet.getElementbyid('searchinput').value;
+                fetch(`http://www.omdbapi.com/?apikey=${apiKey}&s=${searchQuery}`)
+                .then(response => response.json())
+                .then(data => {
+                   
+                    displayResults(data.Search);
+                })
+                
+        }
+
+            }
+        </script>
+    </body>
+    

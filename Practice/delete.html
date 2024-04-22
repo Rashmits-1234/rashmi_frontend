@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Property</title>
+</head>
+<body>
+    <h2>Deleting roll no</h2>
+    
+    <div id="outputBefore"></div>
+    <div id="outputAfter"></div>
+
+    <script>
+        
+        var student = {
+            name: "David Raj",
+            sclass: "VI",
+            rollno: 12
+        };
+
+        
+        document.getElementById("outputBefore").innerHTML = "<h3>Object before deleting rollno :</h3>" + JSON.stringify(student);
+
+        
+        delete student.rollno;
+
+        
+        document.getElementById("outputAfter").innerHTML = "<h3>Object after deleting rollno :</h3>" + JSON.stringify(student);
+    </script>
+</body>
+</html>
