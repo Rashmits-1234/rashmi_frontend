@@ -1,0 +1,38 @@
+#inp {
+  border-radius: 0;
+  border-color: black;
+}
+
+#sub-now {
+  border-radius: 0;
+  width: 160px;
+  position: relative;
+  background-color: rgb(67, 67, 97);
+  top: 8px;
+
+  margin-left: -20px;
+}
+
+#sub-now:hover {
+  border-color: rgb(67, 67, 97);
+  background-color: #202a46;
+
+  color: white;
+}
+
+#button-mit {
+  border-radius: 0;
+  width: 160px;
+  position: relative;
+  top: 8px;
+  position: relative;
+  background-color: rgb(67, 67, 97);
+  margin-left: 60%;
+}
+
+#button-mit:hover {
+  border-color: rgb(67, 67, 97);
+  background-color: #202a46;
+
+  color: white;
+}

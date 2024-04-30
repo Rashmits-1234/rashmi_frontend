@@ -1,0 +1,23 @@
+h1 {
+  font-family: "Times New Roman", Times, serif;
+  letter-spacing: 10px;
+}
+
+p {
+  position: relative;
+  left: -5%;
+}
+
+#btn-book {
+  border-radius: 0;
+}
+
+#btn-book:hover {
+  border-color: rgb(67, 67, 97);
+  background-color: rgb(67, 67, 97);
+  color: white;
+}
+
+#background-col {
+  background-color: red;
+}

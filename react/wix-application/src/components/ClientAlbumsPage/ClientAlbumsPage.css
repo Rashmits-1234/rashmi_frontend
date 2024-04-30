@@ -1,0 +1,12 @@
+#Card-1 {
+  border-radius: 0;
+}
+
+#Card-1:hover {
+  transform: scale3d(15px);
+  transition-duration: 500ms;
+  transition-timing-function: ease-in;
+}
+
+/* #Card-img {
+} */

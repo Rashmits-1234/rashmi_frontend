@@ -1,0 +1,23 @@
+#main-name {
+  word-spacing: 10px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+p {
+  color: rgb(94, 94, 94);
+  font-family: "Times New Roman", Times, serif;
+  text-align: justify;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#page-img {
+  margin-left: 0;
+  padding: 0;
+  position: relative;
+  left: -11px;
+}
+
+h5 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
