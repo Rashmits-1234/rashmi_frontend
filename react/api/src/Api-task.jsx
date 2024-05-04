@@ -4,66 +4,84 @@ import axios from "axios";
 
 const ProductTable = () => {
   const [fetchData, setFetchData] = useState([]);
-  const [addData, setAddData] = useState({});
-  const [editData, setEditData] = useState({});
+  const [addData, setAddData] = useState({ name: "", price: "" });
+  const [editData, setEditData] = useState({ name: "", price: "" });
   const [showAddModal, setShowAddModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [editId, setEditId] = useState(null);
 
   useEffect(() => {
-    apiFetch();
+    fetchDataFromApi();
   }, []);
 
-  const apiFetch = async () => {
-    let res = await axios.get("https://p-9x7e.onrender.com/products/products");
-    setFetchData(res.data.data);
-  };
-
-  const deleteApi = async (deleteId) => {
-    let res = await axios.delete(
-      `https://p-9x7e.onrender.com/products/delete-product/${deleteId}`
-    );
-    apiFetch();
-    if (res.data.error) {
-      alert(res.data.message);
-    } else {
-      alert(res.data.message);
+  const fetchDataFromApi = async () => {
+    try {
+      const res = await axios.get("https://p-9x7e.onrender.com/products/products");
+      setFetchData(res.data.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
     }
   };
 
-  const addApi = async () => {
-    let res = await axios.post(
-      "https://p-9x7e.onrender.com/products/add-product",
-      addData
-    );
-    if (res.data.error) {
-      alert(res.data.message);
-    } else {
-      alert(res.data.message);
+  const deleteProduct = async (deleteId) => {
+    try {
+      const res = await axios.delete(
+        `https://p-9x7e.onrender.com/products/delete-product/${deleteId}`
+      );
+      if (res.status === 200) {
+        fetchDataFromApi(); // Refresh data after successful deletion
+        alert(res.data.message);
+      } else {
+        console.error("Delete request failed with status:", res.status);
+      }
+    } catch (error) {
+      console.error("Error deleting product:", error);
     }
-    apiFetch();
+  };
+
+  const addProduct = async () => {
+    try {
+      const res = await axios.post(
+        "https://p-9x7e.onrender.com/products/add-product",
+        addData
+      );
+      fetchDataFromApi(); // Refresh data after successful addition
+      alert(res.data.message);
+      setShowAddModal(false);
+    } catch (error) {
+      console.error("Error adding product:", error);
+    }
+  };
+
+  const editProduct = async () => {
+    try {
+      const res = await axios.put(
+        `https://p-9x7e.onrender.com/products/edit-product/${editId}`,
+        editData
+      );
+      fetchDataFromApi(); // Refresh data after successful edit
+      alert(res.data.message);
+      setShowEditModal(false);
+    } catch (error) {
+      console.error("Error editing product:", error);
+    }
+  };
+  
+
+  const handleAddModalClose = () => {
     setShowAddModal(false);
+    setAddData({ name: "", price: "" }); // Reset form fields
   };
 
-  const editApi = async () => {
-    let res = await axios.put(
-      `https://p-9x7e.onrender.com/products/edit-product/${editId}`,
-      editData
-    );
-    if (res.data.error) {
-      alert(res.data.message);
-    } else {
-      alert(res.data.message);
-    }
-    apiFetch();
+  const handleEditModalClose = () => {
     setShowEditModal(false);
+    setEditId(null); // Reset editId state
+    setEditData({ name: "", price: "" }); // Reset form fields
   };
 
-  const handleAddModalClose = () => setShowAddModal(false);
-  const handleEditModalClose = () => setShowEditModal(false);
-
-  const handleEdit = (id) => {
+  const handleEdit = (id, name, price) => {
     setEditId(id);
+    setEditData({ name, price });
     setShowEditModal(true);
   };
 
@@ -86,10 +104,10 @@ const ProductTable = () => {
               <td>{product.name}</td>
               <td>{product.price}</td>
               <td>
-                <Button variant="info" onClick={() => handleEdit(product.id)}>
+                <Button variant="info" onClick={() => handleEdit(product.id, product.name, product.price)}>
                   Edit
                 </Button>{" "}
-                <Button variant="danger" onClick={() => deleteApi(product.id)}>
+                <Button variant="danger" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) deleteProduct(product.id) }}>
                   Delete
                 </Button>
               </td>
@@ -98,7 +116,7 @@ const ProductTable = () => {
         </tbody>
       </Table>
 
-      {/ Add Product Modal /}
+      {/* Add Product Modal */}
       <Modal show={showAddModal} onHide={handleAddModalClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Product</Modal.Title>
@@ -110,6 +128,7 @@ const ProductTable = () => {
               <Form.Control
                 type="text"
                 placeholder="Enter product name"
+                value={addData.name}
                 onChange={(e) => setAddData({ ...addData, name: e.target.value })}
               />
             </Form.Group>
@@ -118,6 +137,7 @@ const ProductTable = () => {
               <Form.Control
                 type="number"
                 placeholder="Enter product price"
+                value={addData.price}
                 onChange={(e) => setAddData({ ...addData, price: e.target.value })}
               />
             </Form.Group>
@@ -127,13 +147,13 @@ const ProductTable = () => {
           <Button variant="secondary" onClick={handleAddModalClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={addApi}>
+          <Button variant="primary" onClick={addProduct}>
             Add Product
           </Button>
         </Modal.Footer>
       </Modal>
 
-      {/ Edit Product Modal /}
+      {/* Edit Product Modal */}
       <Modal show={showEditModal} onHide={handleEditModalClose}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Product</Modal.Title>
@@ -145,6 +165,7 @@ const ProductTable = () => {
               <Form.Control
                 type="text"
                 placeholder="Enter product name"
+                value={editData.name}
                 onChange={(e) => setEditData({ ...editData, name: e.target.value })}
               />
             </Form.Group>
@@ -153,6 +174,7 @@ const ProductTable = () => {
               <Form.Control
                 type="number"
                 placeholder="Enter product price"
+                value={editData.price}
                 onChange={(e) => setEditData({ ...editData, price: e.target.value })}
               />
             </Form.Group>
@@ -162,7 +184,7 @@ const ProductTable = () => {
           <Button variant="secondary" onClick={handleEditModalClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={editApi}>
+          <Button variant="primary" onClick={editProduct}>
             Save Changes
           </Button>
         </Modal.Footer>
