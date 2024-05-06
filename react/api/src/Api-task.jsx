@@ -75,7 +75,7 @@ const ProductTable = () => {
 
   const handleEditModalClose = () => {
     setShowEditModal(false);
-    setEditId(null); // Reset editId state
+    setEditId(null); 
     setEditData({ name: "", price: "" }); 
   };
 
