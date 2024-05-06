@@ -59,7 +59,7 @@ const ProductTable = () => {
         `https://p-9x7e.onrender.com/products/edit-product/${editId}`,
         editData
       );
-      fetchDataFromApi(); // Refresh data after successful edit
+      fetchDataFromApi(); 
       alert(res.data.message);
       setShowEditModal(false);
     } catch (error) {
@@ -70,13 +70,13 @@ const ProductTable = () => {
 
   const handleAddModalClose = () => {
     setShowAddModal(false);
-    setAddData({ name: "", price: "" }); // Reset form fields
+    setAddData({ name: "", price: "" }); 
   };
 
   const handleEditModalClose = () => {
     setShowEditModal(false);
     setEditId(null); // Reset editId state
-    setEditData({ name: "", price: "" }); // Reset form fields
+    setEditData({ name: "", price: "" }); 
   };
 
   const handleEdit = (id, name, price) => {
@@ -116,7 +116,7 @@ const ProductTable = () => {
         </tbody>
       </Table>
 
-      {/* Add Product Modal */}
+      
       <Modal show={showAddModal} onHide={handleAddModalClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Product</Modal.Title>
@@ -153,7 +153,7 @@ const ProductTable = () => {
         </Modal.Footer>
       </Modal>
 
-      {/* Edit Product Modal */}
+     
       <Modal show={showEditModal} onHide={handleEditModalClose}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Product</Modal.Title>
