@@ -29,7 +29,7 @@ const ProductTable = () => {
         `https://p-9x7e.onrender.com/products/delete-product/${deleteId}`
       );
       if (res.status === 200) {
-        fetchDataFromApi(); // Refresh data after successful deletion
+        fetchDataFromApi(); 
         alert(res.data.message);
       } else {
         console.error("Delete request failed with status:", res.status);
@@ -45,7 +45,7 @@ const ProductTable = () => {
         "https://p-9x7e.onrender.com/products/add-product",
         addData
       );
-      fetchDataFromApi(); // Refresh data after successful addition
+      fetchDataFromApi(); 
       alert(res.data.message);
       setShowAddModal(false);
     } catch (error) {
